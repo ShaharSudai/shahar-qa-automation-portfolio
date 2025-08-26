@@ -1,4 +1,3 @@
-# features/environment.py
 import sys
 from pathlib import Path
 

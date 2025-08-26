@@ -17,20 +17,32 @@ def quit_driver(driver: WebDriver) -> None:
     # Close the WebDriver instance
     driver.quit()
 
+def parse_locator(locator_str: str):
+    strategy, value = locator_str.split("=", 1)
+    s = strategy.strip().lower()
+    if s == "id":
+        return By.ID, value
+    if s == "name":
+        return By.NAME, value
+    if s == "css":
+        return By.CSS_SELECTOR, value
+    if s == "xpath":
+        return By.XPATH, value
+    if s == "class":
+        return By.CLASS_NAME, value
+    raise ValueError(f"Unknown locator strategy: {strategy}")
+
 def wait_and_click(driver: WebDriver, by: By, locator: str, timeout: int = DEFAULT_TIMEOUT) -> WebElement:
-    # Wait until the element is clickable and click it
     element = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, locator)))
     element.click()
     return element
 
 def enter_text(driver: WebDriver, by: By, locator: str, text: str, timeout: int = DEFAULT_TIMEOUT) -> WebElement:
-    # Wait until the element is visible and type text into it
     element = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, locator)))
     element.clear()
     element.send_keys(text)
     return element
 
 def get_text(driver: WebDriver, by: By, locator: str, timeout: int = DEFAULT_TIMEOUT) -> str:
-    #Wait until the element is visible and return its text
     element = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, locator)))
     return element.text.strip()

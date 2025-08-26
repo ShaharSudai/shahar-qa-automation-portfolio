@@ -18,7 +18,7 @@ Feature: Login functionality
 
   Scenario: Login with locked out user
     When I enter a locked out username
-    And I enter the correct password
+    And I enter a valid password
     And I click the login button
     Then I should see an error message that the user is locked out
 
