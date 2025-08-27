@@ -7,5 +7,7 @@ LOGIN_PAGE = {
 
 INVENTORY_PAGE = {
     "page_title": "class=title",
-    "product_list": "class=inventory_item_name"
+    "product_list": "class=inventory_item_name",
+    "side_menu": "class=bm-burger-button",
+    "logout_button": "id=logout_sidebar_link"
 }

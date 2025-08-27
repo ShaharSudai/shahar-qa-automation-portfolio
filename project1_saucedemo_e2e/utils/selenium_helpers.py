@@ -46,3 +46,7 @@ def enter_text(driver: WebDriver, by: By, locator: str, text: str, timeout: int 
 def get_text(driver: WebDriver, by: By, locator: str, timeout: int = DEFAULT_TIMEOUT) -> str:
     element = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, locator)))
     return element.text.strip()
+
+def get_attribute(driver, by, locator, name, timeout=DEFAULT_TIMEOUT):
+    element = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, locator)))
+    return element.get_attribute(name)
