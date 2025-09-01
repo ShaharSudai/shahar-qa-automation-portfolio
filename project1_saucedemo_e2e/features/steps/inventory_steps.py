@@ -55,13 +55,6 @@ def step_cart_icon_one_item(context):
     badge = get_text(context.driver, by, loc)
     assert badge == "1"
 
-
-@given("I have added a product to the cart")
-def step_given_product_added_to_cart(context):
-    by, loc = parse_locator(INVENTORY_PAGE["first_add_to_cart_button"])
-    wait_and_click(context.driver, by, loc)
-
-
 @when('I click on "Remove" for that product')
 def step_remove_product_from_cart(context):
     by, loc = parse_locator(INVENTORY_PAGE["first_remove_button"])

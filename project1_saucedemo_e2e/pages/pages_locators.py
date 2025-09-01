@@ -12,8 +12,27 @@ INVENTORY_PAGE = {
     "logout_button": "id=logout_sidebar_link",
     "product_names": "class=inventory_item_name",
     "product_prices": "class=inventory_item_price",
+    "first_product_name": "xpath=(//div[@class='inventory_item_name'])[1]",
     "first_add_to_cart_button": "xpath=(//button[contains(text(),'Add to cart')])[1]",
     "first_remove_button": "xpath=(//button[contains(text(),'Remove')])[1]",
+    "second_add_to_cart_button": "xpath=(//button[contains(text(),'Add to cart')])[2]",
     "cart_badge": "class=shopping_cart_badge",
+    "cart_page_button": "id=shopping_cart_container",
     "sort_dropdown": "class=product_sort_container"
+}
+
+CART_PAGE = {
+    "cart_items": "class=cart_item",
+    "cart_badge": "class=shopping_cart_badge",
+    "cart_item_names":  "class=inventory_item_name",
+    "cart_item_prices": "class=inventory_item_price",
+    "cart_item_quantities":"class=cart_quantity",
+    "first_remove_button": "xpath=(//button[contains(text(),'Remove')])[1]",
+    "continue_shopping_button": "xpath=(//button[contains(text(),'Continue Shopping')])",
+    "checkout_button": "xpath=(//button[contains(text(),'Checkout')])"
+
+}
+
+CHECKOUT_PAGE = {
+    "checkout_title": "css=.title"
 }

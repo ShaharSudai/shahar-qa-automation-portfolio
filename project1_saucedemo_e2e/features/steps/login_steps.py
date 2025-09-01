@@ -24,12 +24,6 @@ def step_when_click_login_button(context):
     by, loc = parse_locator(LOGIN_PAGE["login_button"])
     wait_and_click(context.driver, by, loc)
 
-@then("I should be redirected to the inventory page")
-def step_then_redirected_to_inventory(context):
-    by, loc = parse_locator(INVENTORY_PAGE["page_title"])
-    title = get_text(context.driver, by, loc)
-    assert title == "Products"
-
 @then("I should see the products list")
 def step_then_see_products_list(context):
     by, loc = parse_locator(INVENTORY_PAGE["product_list"])

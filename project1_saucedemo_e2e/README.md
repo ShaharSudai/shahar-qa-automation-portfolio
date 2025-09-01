@@ -14,15 +14,13 @@ written using **Behave (BDD)** and **Python Selenium**.
 1. **Login.feature** – Scenarios for valid and invalid login  
 2. **Logout.feature** – Scenarios for logging out  
 3. **Inventory.feature** – Viewing the product inventory (sorting, filtering)  
-4. **AddToCart.feature** – Adding products to the shopping cart  
-5. **RemoveFromCart.feature** – Removing products from the shopping cart  
-6. **Cart.feature** – Cart validations (view cart, item count, totals)  
-7. **Checkout.feature** – Checkout Step One (user information form)  
-8. **CheckoutOverview.feature** – Checkout Step Two (order overview)  
-9. **CheckoutComplete.feature** – Order completion and confirmation message  
-10. **Navigation.feature** – Side menu navigation (All Items, About, Logout, Reset App State)  
-11. **ErrorHandling.feature** – Error messages (invalid login, required fields in checkout)  
-12. **UIValidation.feature** – Basic UI checks (logo, buttons, labels, responsiveness)  
+4. **Cart.feature** – Cart validations (view cart, item count, totals)  
+5. **Checkout.feature** – Checkout Step One (user information form)  
+6. **CheckoutOverview.feature** – Checkout Step Two (order overview)  
+7. **CheckoutComplete.feature** – Order completion and confirmation message  
+8. **Navigation.feature** – Side menu navigation (All Items, About, Logout, Reset App State)  
+9. **ErrorHandling.feature** – Error messages (invalid login, required fields in checkout)  
+10. **UIValidation.feature** – Basic UI checks (logo, buttons, labels, responsiveness)  
 
 ## How to Run
 ```bash
