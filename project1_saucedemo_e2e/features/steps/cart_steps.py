@@ -7,12 +7,6 @@ from utils.selenium_helpers import parse_locator, enter_text, wait_and_click, ge
 from pages.pages_locators import LOGIN_PAGE, INVENTORY_PAGE, CART_PAGE, CHECKOUT_PAGE
 
 
-@when("I open the cart page")
-def step_open_cart_page(context):
-    by, loc = parse_locator(INVENTORY_PAGE["cart_page_button"])
-    wait_and_click(context.driver, by, loc)
-
-
 @then("the cart should be empty")
 def step_cart_should_be_empty(context):
     by, loc = parse_locator(CART_PAGE["cart_items"])
@@ -111,17 +105,5 @@ def step_click_continue_shopping(context):
     by, loc = parse_locator(CART_PAGE["continue_shopping_button"])
     wait_and_click(context.driver, by, loc)
 
-@when('I click "Checkout"')
-def step_click_checkout(context):
-    by, loc = parse_locator(CART_PAGE["checkout_button"])
-    wait_and_click(context.driver, by, loc)
 
 
-@then("I should be redirected to the checkout step one page")
-def step_redirected_to_checkout_step_one(context):
-    assert "/checkout-step-one.html" in context.driver.current_url, \
-        f"Unexpected URL: {context.driver.current_url}"
-
-    by, loc = parse_locator(CHECKOUT_PAGE["checkout_title"])
-    title = get_text(context.driver, by, loc)
-    assert title == "Checkout: Your Information", f"Unexpected title: {title}"

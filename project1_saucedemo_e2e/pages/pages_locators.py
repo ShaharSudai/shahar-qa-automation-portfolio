@@ -6,7 +6,7 @@ LOGIN_PAGE = {
 }
 
 INVENTORY_PAGE = {
-    "page_title": "class=title",
+    "page_title": "css=.title",
     "product_list": "class=inventory_item_name",
     "side_menu": "class=bm-burger-button",
     "logout_button": "id=logout_sidebar_link",
@@ -22,6 +22,7 @@ INVENTORY_PAGE = {
 }
 
 CART_PAGE = {
+    "cart_title": "css=.title",
     "cart_items": "class=cart_item",
     "cart_badge": "class=shopping_cart_badge",
     "cart_item_names":  "class=inventory_item_name",
@@ -34,5 +35,15 @@ CART_PAGE = {
 }
 
 CHECKOUT_PAGE = {
-    "checkout_title": "css=.title"
+    "checkout_title": "css=.title",
+    "continue_button": "id=continue",
+    "cancel_button": "id=cancel",
+    "error_message": "css=h3[data-test='error']",
+    "first_name_field": "id=first-name",
+    "last_name_field": "id=last-name",
+    "postal_code_field": "id=postal-code"
+}
+
+CHECKOUT_OVERVIEW_PAGE = {
+    "overview_title": "css=.title"
 }
