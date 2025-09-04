@@ -45,5 +45,19 @@ CHECKOUT_PAGE = {
 }
 
 CHECKOUT_OVERVIEW_PAGE = {
-    "overview_title": "css=.title"
+    "overview_title": "css=.title",
+    "overview_item_names": "class=inventory_item_name",
+    "overview_item_prices": "class=inventory_item_price",
+    "item_total_label": "css=.summary_subtotal_label",
+    "tax_label": "css=.summary_tax_label",
+    "total_label": "css=.summary_total_label",
+    "cancel_button_step_two": "id=cancel",
+    "finish_button": "id=finish",
+    "back_home_button": "id=back-to-products"
+}
+
+CHECKOUT_COMPLETE_PAGE = {
+    "complete_title": "css=.title",
+    "confirmation_header": "css=.complete-header",
+    "confirmation_text": "css=.complete-text"
 }
