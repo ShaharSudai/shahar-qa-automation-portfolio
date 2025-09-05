@@ -4,11 +4,6 @@ from utils.selenium_helpers import parse_locator, enter_text, wait_and_click, ge
 from pages.pages_locators import LOGIN_PAGE, INVENTORY_PAGE
 
 
-@when("I open the side menu")
-def step_open_side_menu(context):
-    by, loc = parse_locator(INVENTORY_PAGE["side_menu"])
-    wait_and_click(context.driver, by, loc)
-
 @when("I click the logout link")
 def step_click_logout(context):
     by, loc = parse_locator(INVENTORY_PAGE["logout_button"])

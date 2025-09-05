@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from utils.selenium_helpers import parse_locator, enter_text, wait_and_click, get_text, get_attribute
-from pages.pages_locators import LOGIN_PAGE, INVENTORY_PAGE, CART_PAGE, CHECKOUT_PAGE, CHECKOUT_OVERVIEW_PAGE, CHECKOUT_COMPLETE_PAGE
+from pages.pages_locators import LOGIN_PAGE, INVENTORY_PAGE, CART_PAGE, CHECKOUT_PAGE, CHECKOUT_OVERVIEW_PAGE, CHECKOUT_COMPLETE_PAGE, PRODUCT_PAGE
 
 # ===== Generic session state =====
 @given("I am logged in to the SauceDemo application")
@@ -19,6 +19,11 @@ def step_logged_in(context):
 
     by_btn, loc_btn = parse_locator(LOGIN_PAGE["login_button"])
     wait_and_click(context.driver, by_btn, loc_btn)
+
+@when("I open the side menu")
+def step_open_side_menu(context):
+    by, loc = parse_locator(INVENTORY_PAGE["side_menu"])
+    wait_and_click(context.driver, by, loc)
 
 # ===== Inventory helpers (add items) =====
 @given("I have added a product to the cart")

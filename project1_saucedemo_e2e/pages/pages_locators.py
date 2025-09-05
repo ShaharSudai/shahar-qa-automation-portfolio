@@ -9,15 +9,21 @@ INVENTORY_PAGE = {
     "page_title": "css=.title",
     "product_list": "class=inventory_item_name",
     "side_menu": "class=bm-burger-button",
+    "all_items_button": "id=inventory_sidebar_link",
+    "reset_app_state_button": "id=reset_sidebar_link",
+    "about_button": "id=about_sidebar_link",
     "logout_button": "id=logout_sidebar_link",
     "product_names": "class=inventory_item_name",
     "product_prices": "class=inventory_item_price",
     "first_product_name": "xpath=(//div[@class='inventory_item_name'])[1]",
+    "first_product_link": "xpath=(//a[contains(@id,'_title_link')])[1]",
+    "first_product_name_div": "xpath=(//div[contains(@class,'inventory_item_name')])[1]",
     "first_add_to_cart_button": "xpath=(//button[contains(text(),'Add to cart')])[1]",
     "first_remove_button": "xpath=(//button[contains(text(),'Remove')])[1]",
     "second_add_to_cart_button": "xpath=(//button[contains(text(),'Add to cart')])[2]",
     "cart_badge": "class=shopping_cart_badge",
     "cart_page_button": "id=shopping_cart_container",
+    "add_to_cart_buttons": "xpath=//button[text()='Add to cart']",
     "sort_dropdown": "class=product_sort_container"
 }
 
@@ -32,6 +38,11 @@ CART_PAGE = {
     "continue_shopping_button": "xpath=(//button[contains(text(),'Continue Shopping')])",
     "checkout_button": "xpath=(//button[contains(text(),'Checkout')])"
 
+}
+
+PRODUCT_PAGE = {
+    "product_name": "class=inventory_details_name",
+    "back_button": "id=back-to-products"
 }
 
 CHECKOUT_PAGE = {
@@ -60,4 +71,10 @@ CHECKOUT_COMPLETE_PAGE = {
     "complete_title": "css=.title",
     "confirmation_header": "css=.complete-header",
     "confirmation_text": "css=.complete-text"
+}
+
+FOOTER_LINKS = {
+    "twitter": "css=.social_twitter a",
+    "facebook": "css=.social_facebook a",
+    "linkedin": "css=.social_linkedin a"
 }

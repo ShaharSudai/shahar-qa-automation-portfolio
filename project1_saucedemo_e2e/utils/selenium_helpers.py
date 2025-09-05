@@ -50,3 +50,17 @@ def get_text(driver: WebDriver, by: By, locator: str, timeout: int = DEFAULT_TIM
 def get_attribute(driver, by, locator, name, timeout=DEFAULT_TIMEOUT):
     element = WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, locator)))
     return element.get_attribute(name)
+
+def click_and_switch_to_new_tab(driver, by, locator, timeout=10):
+    original = driver.current_window_handle
+    existing = set(driver.window_handles)
+    el = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, locator)))
+    el.click()
+    WebDriverWait(driver, timeout).until(lambda d: len(d.window_handles) > len(existing))
+    new_handle = [h for h in driver.window_handles if h not in existing][0]
+    driver.switch_to.window(new_handle)
+    return original
+
+def close_tab_and_switch_back(driver, original_handle):
+    driver.close()
+    driver.switch_to.window(original_handle)
