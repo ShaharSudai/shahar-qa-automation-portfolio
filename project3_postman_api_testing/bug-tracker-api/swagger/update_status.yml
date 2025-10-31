@@ -1,0 +1,61 @@
+tags:
+  - Bugs
+summary: Update the status of an existing bug
+description: |
+  Updates the current status of a specific bug by its unique ID.  
+  Only valid status values are accepted: `Open`, `In Progress`, `Resolved`, `Closed`.  
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+parameters:
+  - name: bug_id
+    in: path
+    type: string
+    required: true
+    description: The unique identifier of the bug to update
+    example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum: ["Open", "In Progress", "Resolved", "Closed"]
+          example: "Resolved"
+responses:
+  200:
+    description: Status updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Status updated to Resolved"
+  400:
+    description: Invalid or missing status value
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid status"
+  404:
+    description: Bug not found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Bug not found"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"

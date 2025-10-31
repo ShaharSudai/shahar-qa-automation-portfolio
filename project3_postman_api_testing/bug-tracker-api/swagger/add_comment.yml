@@ -1,0 +1,60 @@
+tags:
+  - Bugs
+summary: Add a comment to an existing bug
+description: |
+  Adds a new comment to a specific bug by its unique ID.  
+  Each comment includes the author (taken from the JWT token), the comment text, and a timestamp.  
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+parameters:
+  - name: bug_id
+    in: path
+    type: string
+    required: true
+    description: The unique identifier of the bug to comment on
+    example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - comment
+      properties:
+        comment:
+          type: string
+          example: "Reproduced on version 1.0.2 – assigning to dev team."
+responses:
+  201:
+    description: Comment added successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Comment added"
+  400:
+    description: Missing or invalid comment text
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing comment"
+  404:
+    description: Bug not found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Bug not found"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"

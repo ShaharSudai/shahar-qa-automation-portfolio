@@ -1,0 +1,65 @@
+tags:
+  - Bugs
+summary: Retrieve all bugs
+description: |
+  Returns a list of all bugs currently stored in the system.
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+responses:
+  200:
+    description: List of all existing bugs
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          bug_id:
+            type: string
+            example: "13aa1d6a-2ef9-4e1c-b7d1-5316a8a3b56e"
+          title:
+            type: string
+            example: "Login button not responding"
+          description:
+            type: string
+            example: "Login button on the home page does not trigger any action."
+          priority:
+            type: string
+            example: "High"
+          severity:
+            type: string
+            example: "Critical"
+          created_by:
+            type: string
+            example: "tester01"
+          created_on:
+            type: string
+            example: "2025-10-29 11:43:22"
+          updated_on:
+            type: string
+            example: "2025-10-29 11:43:22"
+          status:
+            type: string
+            example: "Open"
+          comments:
+            type: array
+            items:
+              type: object
+              properties:
+                author:
+                  type: string
+                  example: "admin"
+                comment:
+                  type: string
+                  example: "Verified issue and assigned to dev."
+                time:
+                  type: string
+                  example: "2025-10-29T12:10:45Z"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"

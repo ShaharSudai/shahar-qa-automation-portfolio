@@ -1,0 +1,90 @@
+tags:
+  - Bugs
+summary: Create a new bug
+description: |
+  Creates a new bug entry in the system.  
+  All fields are mandatory.  
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+consumes:
+  - application/json
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - created_by
+        - priority
+        - severity
+        - title
+        - description
+      properties:
+        created_by:
+          type: string
+          example: "tester01"
+        priority:
+          type: string
+          enum: ["Low", "Medium", "High"]
+          example: "High"
+        severity:
+          type: string
+          enum: ["Minor", "Major", "Critical"]
+          example: "Critical"
+        title:
+          type: string
+          example: "Login button not responding"
+        description:
+          type: string
+          example: "When clicking the login button, nothing happens."
+responses:
+  201:
+    description: Bug created successfully
+    schema:
+      type: object
+      properties:
+        bug_id:
+          type: string
+          example: "8f5a6e7c-4a2b-45ad-b3b0-1a9fda3a72d1"
+        created_by:
+          type: string
+          example: "tester01"
+        priority:
+          type: string
+          example: "High"
+        severity:
+          type: string
+          example: "Critical"
+        title:
+          type: string
+          example: "Login button not responding"
+        description:
+          type: string
+          example: "When clicking the login button, nothing happens."
+        created_on:
+          type: string
+          example: "2025-10-29 11:43:22"
+        updated_on:
+          type: string
+          example: "2025-10-29 11:43:22"
+        status:
+          type: string
+          example: "Open"
+  400:
+    description: Missing or invalid fields in request body
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing required field: title"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"

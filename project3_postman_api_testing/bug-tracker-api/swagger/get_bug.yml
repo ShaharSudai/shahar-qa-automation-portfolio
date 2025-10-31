@@ -1,0 +1,78 @@
+tags:
+  - Bugs
+summary: Retrieve a single bug by ID
+description: |
+  Returns detailed information for a specific bug using its unique ID.  
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+parameters:
+  - name: bug_id
+    in: path
+    type: string
+    required: true
+    description: The unique identifier of the bug
+    example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+responses:
+  200:
+    description: Bug details returned successfully
+    schema:
+      type: object
+      properties:
+        bug_id:
+          type: string
+          example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+        title:
+          type: string
+          example: "Login button not responding"
+        description:
+          type: string
+          example: "Button on login screen does not trigger request"
+        priority:
+          type: string
+          example: "High"
+        severity:
+          type: string
+          example: "Critical"
+        created_by:
+          type: string
+          example: "tester01"
+        created_on:
+          type: string
+          example: "2025-10-29 11:43:22"
+        updated_on:
+          type: string
+          example: "2025-10-29 11:43:22"
+        status:
+          type: string
+          example: "Open"
+        comments:
+          type: array
+          items:
+            type: object
+            properties:
+              author:
+                type: string
+                example: "admin"
+              comment:
+                type: string
+                example: "Verified and assigned to developer"
+              time:
+                type: string
+                example: "2025-10-29T12:10:45Z"
+  404:
+    description: Bug not found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Bug not found"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"

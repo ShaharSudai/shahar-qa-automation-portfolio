@@ -1,0 +1,87 @@
+tags:
+  - Bugs
+summary: Update an existing bug
+description: |
+  Updates one or more fields of an existing bug record.  
+  Only the fields provided in the request body will be updated.  
+  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
+security:
+  - BearerAuth: []
+parameters:
+  - name: bug_id
+    in: path
+    type: string
+    required: true
+    description: The unique identifier of the bug to update
+    example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        created_by:
+          type: string
+          example: "tester02"
+        priority:
+          type: string
+          enum: ["Low", "Medium", "High"]
+          example: "Medium"
+        severity:
+          type: string
+          enum: ["Minor", "Major", "Critical"]
+          example: "Major"
+        title:
+          type: string
+          example: "Login button intermittently fails"
+        description:
+          type: string
+          example: "Login button sometimes does not respond after first click."
+responses:
+  200:
+    description: Bug updated successfully
+    schema:
+      type: object
+      properties:
+        bug_id:
+          type: string
+          example: "a12f4567-89bc-4de0-b432-99b87aaf21cd"
+        title:
+          type: string
+          example: "Login button intermittently fails"
+        description:
+          type: string
+          example: "Login button sometimes does not respond after first click."
+        severity:
+          type: string
+          example: "Major"
+        priority:
+          type: string
+          example: "Medium"
+        updated_on:
+          type: string
+          example: "2025-10-29 13:10:44"
+  400:
+    description: Invalid input data
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Invalid severity value"
+  404:
+    description: Bug not found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Bug not found"
+  401:
+    description: Unauthorized – missing or invalid JWT token
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Missing Authorization header"
