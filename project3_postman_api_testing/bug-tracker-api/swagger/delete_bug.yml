@@ -3,10 +3,7 @@ tags:
 summary: Delete a bug by ID
 description: |
   Deletes a specific bug from the system using its unique ID.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).  
-  Only authorized users can perform this action.
-security:
-  - BearerAuth: []
+  
 parameters:
   - name: bug_id
     in: path

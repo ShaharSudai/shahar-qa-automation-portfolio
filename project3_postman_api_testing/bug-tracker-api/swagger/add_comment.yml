@@ -4,9 +4,7 @@ summary: Add a comment to an existing bug
 description: |
   Adds a new comment to a specific bug by its unique ID.  
   Each comment includes the author (taken from the JWT token), the comment text, and a timestamp.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  
 parameters:
   - name: bug_id
     in: path

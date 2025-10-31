@@ -3,9 +3,7 @@ tags:
 summary: Retrieve a single bug by ID
 description: |
   Returns detailed information for a specific bug using its unique ID.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  
 parameters:
   - name: bug_id
     in: path

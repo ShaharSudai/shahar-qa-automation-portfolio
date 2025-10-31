@@ -4,9 +4,7 @@ summary: Update the status of an existing bug
 description: |
   Updates the current status of a specific bug by its unique ID.  
   Only valid status values are accepted: `Open`, `In Progress`, `Resolved`, `Closed`.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  
 parameters:
   - name: bug_id
     in: path

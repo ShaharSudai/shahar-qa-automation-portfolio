@@ -4,9 +4,7 @@ summary: Update an existing bug
 description: |
   Updates one or more fields of an existing bug record.  
   Only the fields provided in the request body will be updated.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  
 parameters:
   - name: bug_id
     in: path

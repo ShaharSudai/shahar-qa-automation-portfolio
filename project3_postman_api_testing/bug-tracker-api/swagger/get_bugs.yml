@@ -1,14 +1,46 @@
 tags:
   - Bugs
-summary: Retrieve all bugs
+summary: Retrieve all bugs (with optional filters)
 description: |
-  Returns a list of all bugs currently stored in the system.
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  Returns a list of bugs stored in the system.  
+  You can optionally filter the results by **status**, **priority**, **severity**, or **search** term.  
+  All filters are case-insensitive.
+
+  **Examples:**
+  - `/bugs` → returns all bugs  
+  - `/bugs?status=Resolved` → returns only resolved bugs  
+  - `/bugs?severity=High` → returns all high-severity bugs  
+  - `/bugs?status=Resolved&severity=High` → combined filters  
+  - `/bugs?search=login` → returns bugs with “login” in their title  
+
+parameters:
+  - name: status
+    in: query
+    type: string
+    required: false
+    description: Filter bugs by status (`Open`, `In Progress`, `Resolved`, `Closed`)
+    example: "Resolved"
+  - name: priority
+    in: query
+    type: string
+    required: false
+    description: Filter bugs by priority value (e.g., 0, 1, 2)
+    example: "1"
+  - name: severity
+    in: query
+    type: string
+    required: false
+    description: Filter bugs by severity level (`Low`, `Medium`, `High`, `Critical`)
+    example: "High"
+  - name: search
+    in: query
+    type: string
+    required: false
+    description: Search bugs by keyword in their title
+    example: "login"
 responses:
   200:
-    description: List of all existing bugs
+    description: List of filtered bugs
     schema:
       type: array
       items:
@@ -29,6 +61,9 @@ responses:
           severity:
             type: string
             example: "Critical"
+          status:
+            type: string
+            example: "Resolved"
           created_by:
             type: string
             example: "tester01"
@@ -38,9 +73,6 @@ responses:
           updated_on:
             type: string
             example: "2025-10-29 11:43:22"
-          status:
-            type: string
-            example: "Open"
           comments:
             type: array
             items:
@@ -51,15 +83,15 @@ responses:
                   example: "admin"
                 comment:
                   type: string
-                  example: "Verified issue and assigned to dev."
+                  example: "Verified and assigned to developer"
                 time:
                   type: string
                   example: "2025-10-29T12:10:45Z"
-  401:
-    description: Unauthorized – missing or invalid JWT token
+  400:
+    description: Invalid query parameter
     schema:
       type: object
       properties:
         error:
           type: string
-          example: "Missing Authorization header"
+          example: "Invalid filter value"

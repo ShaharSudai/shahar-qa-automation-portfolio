@@ -4,9 +4,7 @@ summary: Create a new bug
 description: |
   Creates a new bug entry in the system.  
   All fields are mandatory.  
-  Requires a valid JWT token in the `Authorization` header (format: `Bearer <token>`).
-security:
-  - BearerAuth: []
+  
 consumes:
   - application/json
 parameters:

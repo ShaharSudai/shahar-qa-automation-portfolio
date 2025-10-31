@@ -22,7 +22,9 @@ def _get_bug_dict(bug):
         'priority': bug.priority,
         'severity': bug.severity,
         'title': bug.title,
-        'description': bug.description
+        'description': bug.description,
+        'status': bug.status,
+        'comments': bug.comments
     }
 
     return bug_info
@@ -34,10 +36,22 @@ def welcome():
 @app.route('/bugs', methods=['GET'])
 @swag_from(doc('get_bugs.yml'))
 def get_bugs():
-    bug_list = []
+    status_filter = request.args.get('status')  # קבלת פרמטר מה-URL אם קיים
+    priority_filter = request.args.get('priority')
+    severity_filter = request.args.get('severity')
 
-    for bug in bugs:
-        bug_list.append(_get_bug_dict(bug))
+    filtered_bugs = bugs
+
+    if status_filter:
+        filtered_bugs = [b for b in filtered_bugs if b.status.lower() == status_filter.lower()]
+
+    if priority_filter:
+        filtered_bugs = [b for b in filtered_bugs if str(b.priority).lower() == priority_filter.lower()]
+
+    if severity_filter:
+        filtered_bugs = [b for b in filtered_bugs if b.severity.lower() == severity_filter.lower()]
+
+    bug_list = [_get_bug_dict(bug) for bug in filtered_bugs]
 
     return jsonify(bug_list), 200
 
@@ -52,10 +66,14 @@ def get_bug(bug_id):
         return jsonify({'error': 'Bug not found'}), 404
 
 @app.route('/bugs', methods=['POST'])
-@jwt_required()
 @swag_from(doc('create_bug.yml'))
 def create_bug():
-    data = request.json
+    data = request.get_json() or {}
+
+    required_fields = ['created_by', 'priority', 'severity', 'title', 'description']
+    for field in required_fields:
+        if field not in data or not data[field]:
+            return jsonify({"error": f"Missing required field: {field}"}), 400
 
     new_bug = Bug(
         data['created_by'],
@@ -69,7 +87,6 @@ def create_bug():
     return jsonify(_get_bug_dict(new_bug)), 201
 
 @app.route('/bugs/<string:bug_id>', methods=['PUT'])
-@jwt_required()
 @swag_from(doc('update_bug.yml'))
 def update_bug(bug_id):
     bug = next((b for b in bugs if b.bug_id == bug_id), None)
@@ -82,12 +99,13 @@ def update_bug(bug_id):
     bug.severity = data.get('severity', bug.severity)
     bug.title = data.get('title', bug.title)
     bug.description = data.get('description', bug.description)
+    bug.status = data.get('status', bug.status)
+    bug.comments = data.get('comments', bug.comments)
     bug.updated_on = datetime.utcnow()
 
     return jsonify(_get_bug_dict(bug)), 200
 
 @app.route('/bugs/<string:bug_id>', methods=['DELETE'])
-@jwt_required()
 @swag_from(doc('delete_bug.yml'))
 def delete_bug(bug_id):
     bug = next((b for b in bugs if b.bug_id == bug_id), None)
@@ -105,7 +123,6 @@ def delete_bug(bug_id):
     return jsonify(deleted_bug), 200
 
 @app.route('/bugs/<string:bug_id>/status', methods=['PUT'])
-@jwt_required()
 @swag_from(doc('update_status.yml'))
 def update_status(bug_id):
     bug = next((b for b in bugs if b.bug_id == bug_id), None)
@@ -125,7 +142,6 @@ def update_status(bug_id):
 
 
 @app.route('/bugs/<string:bug_id>/comment', methods=['POST'])
-@jwt_required()
 @swag_from(doc('add_comment.yml'))
 def add_comment(bug_id):
     bug = next((b for b in bugs if b.bug_id == bug_id), None)
@@ -137,7 +153,13 @@ def add_comment(bug_id):
     if not comment:
         return jsonify({"error": "Missing comment"}), 400
 
-    user = get_jwt_identity()["user"]
-    bug.comments.append({"author": user, "comment": comment, "time": datetime.utcnow().isoformat()})
+    # ✅ לא משתמשים יותר ב־JWT — נשתמש בשם שנשלח בבקשה או "anonymous"
+    user = data.get("author", "anonymous")
+
+    bug.comments.append({
+        "author": user,
+        "comment": comment,
+        "time": datetime.utcnow().isoformat()
+    })
     bug.updated_on = datetime.utcnow()
     return jsonify({"message": "Comment added"}), 201

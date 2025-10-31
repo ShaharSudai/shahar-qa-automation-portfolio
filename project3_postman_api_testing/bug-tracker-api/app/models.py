@@ -15,5 +15,4 @@ class Bug:
         self.title = title
         self.description = description
         self.status = "Open"
-        self.assigned_to = None
         self.comments = []
