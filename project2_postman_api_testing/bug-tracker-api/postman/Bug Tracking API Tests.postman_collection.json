@@ -77,7 +77,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"bugs_count\", 0)"
+									"pm.environment.set(\"bugs_count\", 0)"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -118,11 +118,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_1\", 1);\r",
-									"pm.collectionVariables.set(\"severity_1\", \"High\");\r",
-									"pm.collectionVariables.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
-									"pm.collectionVariables.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");\r",
+									"pm.environment.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_1\", 1);\r",
+									"pm.environment.set(\"severity_1\", \"High\");\r",
+									"pm.environment.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
+									"pm.environment.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");\r",
 									""
 								],
 								"type": "text/javascript",
@@ -140,17 +140,17 @@
 									"\r",
 									"const jsonData = pm.response.json();\r",
 									"\r",
-									"pm.collectionVariables.set(\"bug_id_1\", jsonData.bug_id)\r",
+									"pm.environment.set(\"bug_id_1\", jsonData.bug_id)\r",
 									"\r",
-									"var bugs_count = pm.collectionVariables.get(\"bugs_count\");\r",
+									"var bugs_count = pm.environment.get(\"bugs_count\");\r",
 									"\r",
 									"bugs_count = bugs_count + 1\r",
-									"pm.collectionVariables.set(\"bugs_count\", bugs_count)\r",
+									"pm.environment.set(\"bugs_count\", bugs_count)\r",
 									"\r",
 									"pm.test(\"Test values of the response\", function () {\r",
 									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.priority).to.eql(pm.collectionVariables.get(\"priority_1\"));\r",
-									"    pm.expect(jsonData.severity).to.eql(pm.collectionVariables.get(\"severity_1\"));\r",
+									"    pm.expect(jsonData.priority).to.eql(pm.environment.get(\"priority_1\"));\r",
+									"    pm.expect(jsonData.severity).to.eql(pm.environment.get(\"severity_1\"));\r",
 									"    pm.expect(jsonData.created_by).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.title).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.description).to.be.a(\"string\");\r",
@@ -208,17 +208,17 @@
 									"\r",
 									"const jsonData = pm.response.json();\r",
 									"\r",
-									"pm.collectionVariables.set(\"bug_id_2\", jsonData.bug_id)\r",
+									"pm.environment.set(\"bug_id_2\", jsonData.bug_id)\r",
 									"\r",
-									"var bugs_count = pm.collectionVariables.get(\"bugs_count\");\r",
+									"var bugs_count = pm.environment.get(\"bugs_count\");\r",
 									"\r",
 									"bugs_count = bugs_count + 1\r",
-									"pm.collectionVariables.set(\"bugs_count\", bugs_count)\r",
+									"pm.environment.set(\"bugs_count\", bugs_count)\r",
 									"\r",
 									"pm.test(\"Test values of the response\", function () {\r",
 									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.priority).to.eql(pm.collectionVariables.get(\"priority_2\"));\r",
-									"    pm.expect(jsonData.severity).to.eql(pm.collectionVariables.get(\"severity_2\"));\r",
+									"    pm.expect(jsonData.priority).to.eql(pm.environment.get(\"priority_2\"));\r",
+									"    pm.expect(jsonData.severity).to.eql(pm.environment.get(\"severity_2\"));\r",
 									"    pm.expect(jsonData.created_by).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.title).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.description).to.be.a(\"string\");\r",
@@ -233,11 +233,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_2\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_2\", 2);\r",
-									"pm.collectionVariables.set(\"severity_2\", \"Medium\");\r",
-									"pm.collectionVariables.set(\"title_2\", \"{{$randomCatchPhrase}}\");\r",
-									"pm.collectionVariables.set(\"description_2\", \"{{$randomCatchPhraseDescriptor}}\");"
+									"pm.environment.set(\"created_by_2\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_2\", 2);\r",
+									"pm.environment.set(\"severity_2\", \"Medium\");\r",
+									"pm.environment.set(\"title_2\", \"{{$randomCatchPhrase}}\");\r",
+									"pm.environment.set(\"description_2\", \"{{$randomCatchPhraseDescriptor}}\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -288,17 +288,17 @@
 									"\r",
 									"const jsonData = pm.response.json();\r",
 									"\r",
-									"pm.collectionVariables.set(\"bug_id_3\", jsonData.bug_id)\r",
+									"pm.environment.set(\"bug_id_3\", jsonData.bug_id)\r",
 									"\r",
-									"var bugs_count = pm.collectionVariables.get(\"bugs_count\");\r",
+									"var bugs_count = pm.environment.get(\"bugs_count\");\r",
 									"\r",
 									"bugs_count = bugs_count + 1\r",
-									"pm.collectionVariables.set(\"bugs_count\", bugs_count)\r",
+									"pm.environment.set(\"bugs_count\", bugs_count)\r",
 									"\r",
 									"pm.test(\"Test values of the response\", function () {\r",
 									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.priority).to.eql(pm.collectionVariables.get(\"priority_3\"));\r",
-									"    pm.expect(jsonData.severity).to.eql(pm.collectionVariables.get(\"severity_3\"));\r",
+									"    pm.expect(jsonData.priority).to.eql(pm.environment.get(\"priority_3\"));\r",
+									"    pm.expect(jsonData.severity).to.eql(pm.environment.get(\"severity_3\"));\r",
 									"    pm.expect(jsonData.created_by).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.title).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.description).to.be.a(\"string\");\r",
@@ -313,11 +313,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_3\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_3\", 2);\r",
-									"pm.collectionVariables.set(\"severity_3\", \"Low\");\r",
-									"pm.collectionVariables.set(\"title_3\", \"{{$randomCatchPhrase}}\");\r",
-									"pm.collectionVariables.set(\"description_3\", \"{{$randomCatchPhraseDescriptor}}\");"
+									"pm.environment.set(\"created_by_3\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_3\", 2);\r",
+									"pm.environment.set(\"severity_3\", \"Low\");\r",
+									"pm.environment.set(\"title_3\", \"{{$randomCatchPhrase}}\");\r",
+									"pm.environment.set(\"description_3\", \"{{$randomCatchPhraseDescriptor}}\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -375,12 +375,19 @@
 									"const responseJson = pm.response.json();\r",
 									"\r",
 									"pm.test(\"Response must contain 3 elements\", function () {\r",
-									"    pm.expect(responseJson.length).to.eql(pm.collectionVariables.get(\"bugs_count\"));\r",
+									"    pm.expect(responseJson.length).to.eql(pm.environment.get(\"bugs_count\"));\r",
 									"});"
 								],
 								"type": "text/javascript",
 								"packages": {},
 								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -420,8 +427,8 @@
 									"\r",
 									"pm.test(\"Test values of the response\", function () {\r",
 									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.priority).to.eql(pm.collectionVariables.get(\"priority_1\"));\r",
-									"    pm.expect(jsonData.severity).to.eql(pm.collectionVariables.get(\"severity_1\"));\r",
+									"    pm.expect(jsonData.priority).to.eql(pm.environment.get(\"priority_1\"));\r",
+									"    pm.expect(jsonData.severity).to.eql(pm.environment.get(\"severity_1\"));\r",
 									"    pm.expect(jsonData.created_by).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.title).to.be.a(\"string\");\r",
 									"    pm.expect(jsonData.description).to.be.a(\"string\");\r",
@@ -436,11 +443,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_1\", 2);\r",
-									"pm.collectionVariables.set(\"severity_1\", \"Medium\");\r",
-									"pm.collectionVariables.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
-									"pm.collectionVariables.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");"
+									"pm.environment.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_1\", 2);\r",
+									"pm.environment.set(\"severity_1\", \"Medium\");\r",
+									"pm.environment.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
+									"pm.environment.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -499,17 +506,24 @@
 									"const responseJson = pm.response.json();\r",
 									"\r",
 									"pm.test(\"Response bug_id must match\", function () {\r",
-									"    pm.expect(responseJson.bug_id).to.eql(pm.collectionVariables.get(\"bug_id_2\"));\r",
+									"    pm.expect(responseJson.bug_id).to.eql(pm.environment.get(\"bug_id_2\"));\r",
 									"});\r",
 									"\r",
-									"var bugs_count = pm.collectionVariables.get(\"bugs_count\");\r",
+									"var bugs_count = pm.environment.get(\"bugs_count\");\r",
 									"\r",
 									"bugs_count = bugs_count - 1\r",
-									"pm.collectionVariables.set(\"bugs_count\", bugs_count);"
+									"pm.environment.set(\"bugs_count\", bugs_count);"
 								],
 								"type": "text/javascript",
 								"packages": {},
 								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -559,13 +573,20 @@
 									"const responseJson = pm.response.json();\r",
 									"\r",
 									"pm.test(\"Response must contain 2 elements\", function () {\r",
-									"    pm.expect(responseJson.length).to.eql(pm.collectionVariables.get(\"bugs_count\"));\r",
+									"    pm.expect(responseJson.length).to.eql(pm.environment.get(\"bugs_count\"));\r",
 									"});\r",
 									""
 								],
 								"type": "text/javascript",
 								"packages": {},
 								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -609,7 +630,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"status_1\", \"Resolved\");"
+									"pm.environment.set(\"status_1\", \"Resolved\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -628,7 +649,7 @@
 									"\r",
 									"pm.test(\"Test values of the response\", function () {\r",
 									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.message).to.include(pm.collectionVariables.get(\"status_1\"));\r",
+									"    pm.expect(jsonData.message).to.include(pm.environment.get(\"status_1\"));\r",
 									"});\r",
 									""
 								],
@@ -657,12 +678,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/bugs/{{bug_id_1}}/status",
-							"protocol": "http",
+							"raw": "{{base_url}}/bugs/{{bug_id_1}}/status",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
 								"bugs",
 								"{{bug_id_1}}",
@@ -683,17 +702,24 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
+									"\r",
 									"const jsonData = pm.response.json();\r",
 									"\r",
 									"\r",
-									"pm.test(\"Test values of the response\", function () {\r",
-									"    pm.expect(jsonData).to.be.an(\"object\");\r",
-									"    pm.expect(jsonData.status).to.eql(\"Resolved\");\r",
+									"pm.test(\"Test bug status\", function () {\r",
+									"    pm.expect(jsonData[0].status).to.eql(\"Resolved\");\r",
 									"});"
 								],
 								"type": "text/javascript",
 								"packages": {},
 								"requests": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
 							}
 						}
 					],
@@ -725,8 +751,8 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"author_1\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"comment_1\", \"{{$randomCatchPhrase}}\");"
+									"pm.environment.set(\"author_1\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"comment_1\", \"{{$randomCatchPhrase}}\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -759,6 +785,67 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"author\": \"{{author_1}}\",\r\n  \"comment\": \"{{comment_1}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bugs/{{bug_id_3}}/comment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bugs",
+								"{{bug_id_3}}",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"author_2\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"comment_2\", \"{{$randomCatchPhrase}}\");"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"author\": \"{{author_2}}\",\r\n  \"comment\": \"{{comment_2}}\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -839,10 +926,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_4\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_4\", 1);\r",
-									"pm.collectionVariables.set(\"severity_4\", \"High\");\r",
-									"pm.collectionVariables.set(\"description_4\", \"{{$randomCatchPhraseDescriptor}}\");\r",
+									"pm.environment.set(\"created_by_4\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_4\", 1);\r",
+									"pm.environment.set(\"severity_4\", \"High\");\r",
+									"pm.environment.set(\"description_4\", \"{{$randomCatchPhraseDescriptor}}\");\r",
 									""
 								],
 								"type": "text/javascript",
@@ -902,11 +989,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
-									"pm.collectionVariables.set(\"priority_1\", 2);\r",
-									"pm.collectionVariables.set(\"severity_1\", \"Medium\");\r",
-									"pm.collectionVariables.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
-									"pm.collectionVariables.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");"
+									"pm.environment.set(\"created_by_1\", \"{{$randomFullName}}\");\r",
+									"pm.environment.set(\"priority_1\", 2);\r",
+									"pm.environment.set(\"severity_1\", \"Medium\");\r",
+									"pm.environment.set(\"title_1\", \"{{$randomCatchPhrase}}\");\r",
+									"pm.environment.set(\"description_1\", \"{{$randomCatchPhraseDescriptor}}\");"
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -945,6 +1032,56 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bugs/a9f9bcv9s99gf9d9nb9kvm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bugs",
+								"a9f9bcv9s99gf9d9nb9kvm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Non-Existing Bug",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Test error response\", function () {\r",
+									"    pm.expect(jsonData).to.be.an(\"object\");\r",
+									"    pm.expect(jsonData.error).to.include(\"Bug not found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{base_url}}/bugs/a9f9bcv9s99gf9d9nb9kvm",
@@ -1036,104 +1173,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "created_by_4",
-			"value": ""
-		},
-		{
-			"key": "priority_4",
-			"value": ""
-		},
-		{
-			"key": "severity_4",
-			"value": ""
-		},
-		{
-			"key": "description_4",
-			"value": ""
-		},
-		{
-			"key": "created_by_1",
-			"value": ""
-		},
-		{
-			"key": "priority_1",
-			"value": ""
-		},
-		{
-			"key": "severity_1",
-			"value": ""
-		},
-		{
-			"key": "title_1",
-			"value": ""
-		},
-		{
-			"key": "description_1",
-			"value": ""
-		},
-		{
-			"key": "bug_id_1",
-			"value": ""
-		},
-		{
-			"key": "bugs_count",
-			"value": ""
-		},
-		{
-			"key": "created_by_2",
-			"value": ""
-		},
-		{
-			"key": "priority_2",
-			"value": ""
-		},
-		{
-			"key": "severity_2",
-			"value": ""
-		},
-		{
-			"key": "title_2",
-			"value": ""
-		},
-		{
-			"key": "description_2",
-			"value": ""
-		},
-		{
-			"key": "bug_id_2",
-			"value": ""
-		},
-		{
-			"key": "created_by_3",
-			"value": ""
-		},
-		{
-			"key": "priority_3",
-			"value": ""
-		},
-		{
-			"key": "severity_3",
-			"value": ""
-		},
-		{
-			"key": "title_3",
-			"value": ""
-		},
-		{
-			"key": "description_3",
-			"value": ""
-		},
-		{
-			"key": "bug_id_3",
-			"value": ""
-		},
-		{
-			"key": "status_1",
-			"value": ""
 		}
 	]
 }
