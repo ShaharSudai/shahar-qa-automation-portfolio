@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="classes" thread-count="2">
+    <test verbose="2" preserve-order="true" name="\Users\שחר\Documents\GitHub\shahar-qa-automation-portfolio\project2_saucedemo_java_bdd">
+        <classes>
+            <class name="com.shahar.javatests.TestRunner"></class>
+        </classes>
+    </test>
+</suite>

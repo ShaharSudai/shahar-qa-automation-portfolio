@@ -1,4 +1,4 @@
-package pages;
+package com.shahar.javatests.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
