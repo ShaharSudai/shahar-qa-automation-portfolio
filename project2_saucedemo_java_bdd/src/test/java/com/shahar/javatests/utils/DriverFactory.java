@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
+import java.time.Duration;
+
 public class DriverFactory {
 
     public enum BrowserType {
@@ -24,6 +26,7 @@ public class DriverFactory {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
                 driver = new ChromeDriver(chromeOptions);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                 break;
             case FIREFOX:
                 FirefoxOptions firefoxOptions = new FirefoxOptions();

@@ -12,7 +12,7 @@ Feature: Checkout Flow
     Then Button text on the page should change to "Remove"
     And User navigates back to the inventory page
 
-    Given User navigates to the product page for "Sauce Labs Bike Light"
+    Given User navigates to the product page for "Sauce Labs Fleece Jacket"
     When User adds the product to cart
     Then Button text on the page should change to "Remove"
     And User navigates back to the inventory page
@@ -20,7 +20,7 @@ Feature: Checkout Flow
     When User navigates to the cart page
     Then User should be on the cart page
     And The cart should contain product "Sauce Labs Backpack"
-    And The cart should contain product "Sauce Labs Bike Light"
+    And The cart should contain product "Sauce Labs Fleece Jacket"
     And The cart item count should be "2"
     And The checkout button text should be "Checkout"
 

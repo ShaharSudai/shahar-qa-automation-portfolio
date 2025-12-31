@@ -29,7 +29,7 @@ public class StepDefinitions {
 
     @Before
     public void setUp() {
-        driver = DriverFactory.createDriver(DriverFactory.BrowserType.CHROME);
+        driver = DriverFactory.createDriver(DriverFactory.BrowserType.EDGE);
     }
 
     @Given("User is on the login page")
@@ -68,7 +68,7 @@ public class StepDefinitions {
 
     @Then("Button text on the page should change to \"Remove\"")
     public void button_text_on_the_page_should_change_to_remove() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         Assert.assertEquals(productPage.getButtonText(), "Remove",
                 "Button text did not change");
     }
